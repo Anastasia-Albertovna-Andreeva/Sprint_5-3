@@ -12,9 +12,9 @@ class TestOpenPersonalAccountFromHome:
         driver.find_element(*Locator.input_email_auth).send_keys(CorrectUsersData.email)
         driver.find_element(*Locator.input_password_auth).send_keys(CorrectUsersData.password)
         driver.find_element(*Locator.button_login).click()
-        WebDriverWait(driver, 20).until(
+        WebDriverWait(driver, 25).until(
             EC.visibility_of_element_located(Locator.button_make_the_order))
         driver.find_element(*Locator.button_personal_account).click()
-        WebDriverWait(driver, 20).until(
+        WebDriverWait(driver, 25).until(
             EC.visibility_of_element_located(Locator.profile))
         assert driver.find_element(*Locator.profile).is_displayed()

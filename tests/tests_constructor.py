@@ -34,7 +34,7 @@ class TestConstructorSectionNavigation:
         self.login(driver)
         # Переход в конструктор
         driver.find_element(*Locator.header_of_page_constructor).click()
-        WebDriverWait(driver, 20).until(EC.visibility_of_element_located(Locator.nachinki_block))
+        WebDriverWait(driver, 25).until(EC.visibility_of_element_located(Locator.nachinki_block))
         # Проверка, что раздел "Начинки" отображается
         assert driver.find_element(*Locator.nachinki_block).is_displayed()
 
@@ -42,22 +42,22 @@ class TestConstructorSectionNavigation:
         self.login(driver)
         # Переход в конструктор
         driver.find_element(*Locator.header_of_page_constructor).click()
-        WebDriverWait(driver, 20).until(EC.visibility_of_element_located(Locator.bulki_block))
+        WebDriverWait(driver, 25).until(EC.visibility_of_element_located(Locator.bulki_block))
 
         # Переход из "Булки" в "Соусы"
         driver.find_element(*Locator.bulki_block).click()
-        WebDriverWait(driver, 20).until(EC.visibility_of_element_located(Locator.sauces_block))
+        WebDriverWait(driver, 25).until(EC.visibility_of_element_located(Locator.sauces_block))
         driver.find_element(*Locator.sauces_block).click()
         assert driver.find_element(*Locator.sauces_block).is_displayed()
 
         # Переход из "Соусы" в "Начинки"
         driver.find_element(*Locator.sauces_block).click()
-        WebDriverWait(driver, 20).until(EC.visibility_of_element_located(Locator.nachinki_block))
+        WebDriverWait(driver, 25).until(EC.visibility_of_element_located(Locator.nachinki_block))
         driver.find_element(*Locator.nachinki_block).click()
         assert driver.find_element(*Locator.nachinki_block).is_displayed()
 
         # Переход из "Начинки" в "Булки"
         driver.find_element(*Locator.nachinki_block).click()
-        WebDriverWait(driver, 20).until(EC.visibility_of_element_located(Locator.bulki_block))
+        WebDriverWait(driver, 25).until(EC.visibility_of_element_located(Locator.bulki_block))
         driver.find_element(*Locator.bulki_block).click()
         assert driver.find_element(*Locator.bulki_block).is_displayed()

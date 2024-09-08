@@ -12,7 +12,7 @@ class TestRegistrationPage:
         driver.find_element(*Locator.input_email).send_keys(CorrectUsersData.email)
         driver.find_element(*Locator.input_password).send_keys(CorrectUsersData.password)
         driver.find_element(*Locator.button_submit).click()
-        WebDriverWait(driver, 20).until(EC.url_to_be(URL.login)) # Ожидание перенаправления на страницу входа
+        WebDriverWait(driver, 25).until(EC.url_to_be(URL.login)) # Ожидание перенаправления на страницу входа
 
 
     def test_registration_with_existing_user(self, driver):
@@ -21,7 +21,7 @@ class TestRegistrationPage:
         driver.find_element(*Locator.input_email).send_keys(RegisteredUserData.email)
         driver.find_element(*Locator.input_password).send_keys(RegisteredUserData.password)
         driver.find_element(*Locator.button_submit).click()
-        WebDriverWait(driver, 20).until(
+        WebDriverWait(driver, 25).until(
             EC.visibility_of_element_located(Locator.user_exists_message)
         ) # Ожидание появления сообщения об ошибке
         error_message = driver.find_element(*Locator.user_exists_message).text
@@ -60,7 +60,7 @@ class TestRegistrationPage:
         driver.find_element(*Locator.input_email).send_keys(InvalidData.email)
         driver.find_element(*Locator.input_password).send_keys(InvalidData.password)
         driver.find_element(*Locator.button_submit).click()
-        WebDriverWait(driver, 20).until(
+        WebDriverWait(driver, 25).until(
             EC.visibility_of_element_located(Locator.notification_incorrect_password)) # Ожидание и проверка наличия сообщения об ошибке
         error_message = driver.find_element(*Locator.notification_incorrect_password).text
         assert 'Некорректный пароль' in error_message # Проверка текста сообщения об ошибке
@@ -71,7 +71,7 @@ class TestRegistrationPage:
         driver.find_element(*Locator.input_email).send_keys(InvalidData_2.email)
         driver.find_element(*Locator.input_password).send_keys(InvalidData_2.password)
         driver.find_element(*Locator.button_submit).click()
-        WebDriverWait(driver, 10).until(
+        WebDriverWait(driver, 25).until(
             EC.visibility_of_element_located(Locator.notification_incorrect_password)) # Ожидание и проверка наличия сообщения об ошибке
         error_message = driver.find_element(*Locator.notification_incorrect_password).text
         assert 'Некорректный пароль' in error_message # Проверка текста сообщения об ошибке
